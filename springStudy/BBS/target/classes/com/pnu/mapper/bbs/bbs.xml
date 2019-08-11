@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis map 선언 표시 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+              "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+              
+<!-- BBSDaoImpl namespace와 일치해야한다. -->
+<mapper namespace="com.pnu.bbs.dao.BBSDao">
+	<select id="list" resultType="article">
+		<![CDATA[
+			SELECT * 
+			FROM BBS		
+		]]>
+	</select>
+	
+	<insert id="write" parameterType="article">
+		INSERT INTO BBS VALUES(BBS_SEQ.NEXTVAL,#{id},#{title},#{content},0,SYSDATE)
+	</insert>
+	
+	<select id="content" parameterType="int" resultType="article">
+		SELECT * FROM BBS WHERE ARTICLENUM=#{articleNum} 
+	</select>
+
+	<update id="upHit" parameterType="int">
+		UPDATE BBS 
+		SET HIT = HIT + 1
+		WHERE ARTICLENUM=#{articleNum}
+	</update>
+	
+	
+</mapper>

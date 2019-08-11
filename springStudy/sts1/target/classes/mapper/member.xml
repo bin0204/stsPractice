@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  public class MemberMapper  -->  
+<mapper namespace="MemberMapper">
+	
+	<!--  public int insertMemberOne(Map) {  -->
+	<insert id="insertMemberOne" parameterType="map">
+		INSERT INTO MEMBER(ID, PW, NAME, IMG)
+		VALUES( #{ID}, #{PW}, #{NA}, #{FD, jdbcType=BLOB} ) 
+	</insert>
+	
+	<!--  public List<Map<String, Object>> selectMember() -->
+	<select id="selectMemberList" resultType="map">
+		SELECT ID, PW, NAME FROM MEMBER
+	</select>
+	
+</mapper>
